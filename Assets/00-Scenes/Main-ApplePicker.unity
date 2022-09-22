@@ -123,28 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &545786219 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4866001934692708120, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
-  m_PrefabInstance: {fileID: 1066927773952001401}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &545786220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545786219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31318c0d23bb2e245b0fbe66577a0cd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  applePrefab: {fileID: 929689723614585025, guid: 6bff0c2b70519d6448b99511ae430bdb, type: 3}
-  speed: 10
-  leftAndRightEdge: 20
-  chanceToChangeDirection: 0.02
-  secondsBetweenAppleDrop: 0
 --- !u!1 &792234105
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +134,7 @@ GameObject:
   - component: {fileID: 792234108}
   - component: {fileID: 792234107}
   - component: {fileID: 792234106}
+  - component: {fileID: 792234109}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -228,6 +207,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &792234109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792234105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a6f3a140ca3d34e84d42e49960d844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1572004184
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +319,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 571191692836413945, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 571191692836413945, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: applePrefab
+      value: 
+      objectReference: {fileID: 929689723614585025, guid: 6bff0c2b70519d6448b99511ae430bdb, type: 3}
+    - target: {fileID: 571191692836413945, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: leftAndRightEdge
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 571191692836413945, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: chanceToChangeDirection
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 571191692836413945, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: secondsBetweenAppleDrop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 571191692836413945, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: secondsBetweenAppleDrops
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 826720719704764034, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -384,9 +399,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2373247262897962410, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3862651850430090464, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4866001934692708120, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
       propertyPath: m_Name
       value: AppleTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866001934692708120, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228193680034918622, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ee5da331fc79e148891b8f47afb5945, type: 3}

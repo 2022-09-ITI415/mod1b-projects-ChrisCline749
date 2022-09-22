@@ -11,11 +11,14 @@ public class AppleTree : MonoBehaviour
     public float speed = 1f;
     public float leftAndRightEdge = 10f;
     public float chanceToChangeDirection;
-    public float secondsBetweenAppleDrop;
+    public float secondsBetweenAppleDrops;
+
+    public static float bottomY = -20f;
 
     void Start()
     {
         // Dropping apples every second
+        Invoke("DropApple", 2f);
     }
 
     void Update()
@@ -44,4 +47,12 @@ public class AppleTree : MonoBehaviour
             speed *= -1;
         }
     }
+
+    void DropApple()
+    {
+        GameObject apple = Instantiate <GameObject>(applePrefab);
+        apple.transform.position = transform.position;
+        Invoke("DropApple", secondsBetweenAppleDrops);
+    }
+
 }
