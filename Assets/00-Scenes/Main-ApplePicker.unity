@@ -219,6 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a6f3a140ca3d34e84d42e49960d844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basketPrefab: {fileID: 634755724196918344, guid: 97ab5d0898d49dd4aa64ab477f1b31e9, type: 3}
+  numBaskets: 3
+  basketBottomY: -14
+  basketSpacingY: 2
 --- !u!1 &1572004184
 GameObject:
   m_ObjectHideFlags: 0
