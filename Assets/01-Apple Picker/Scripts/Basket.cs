@@ -45,6 +45,10 @@ public class Basket : MonoBehaviour
             Destroy(collidedWith);
             score += 100;
             scoreGt.text = "Score: " + score.ToString();
+            if (score > HighScore.score)
+            {
+                HighScore.score = score;
+            }
         }
     }
 
