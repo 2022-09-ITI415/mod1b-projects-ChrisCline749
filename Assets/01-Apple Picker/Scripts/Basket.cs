@@ -1,9 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Basket : MonoBehaviour
 {
+    [Header("Set Dynamically")]
+
+    int score = 0;
+
+    public TextMeshProUGUI scoreGt;
+
+    void Start()
+    {
+        // Find a reference to the ScoreCounter
+        GameObject scoreGO = GameObject.FindGameObjectWithTag("Score");
+        // Get the Text Component of that GameO
+        scoreGt = scoreGO.GetComponent<TextMeshProUGUI>();
+        // Set the starting number of points to
+        scoreGt.text = "Score: 0";
+    }
+
     void Update()
     {
         // Get the current screen position of the mouse from Input
@@ -16,6 +34,18 @@ public class Basket : MonoBehaviour
         Vector3 pos = this.transform.position;
         pos.x = mousePos3D.x;
         this.transform.position = pos;
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        // Find out what hit this basket
+        GameObject collidedWith = coll.gameObject;
+        if (collidedWith.tag == "Apple")
+        {
+            Destroy(collidedWith);
+            score += 100;
+            scoreGt.text = "Score: " + score.ToString();
+        }
     }
 
 }
