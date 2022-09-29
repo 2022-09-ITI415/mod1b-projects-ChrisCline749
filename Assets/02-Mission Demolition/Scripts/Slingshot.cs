@@ -6,12 +6,15 @@ public class Slingshot : MonoBehaviour
 {
     [Header("Set in Inspecter")]
     public GameObject prefabProjectile;
+    public float velocityMult = 8;
 
     [Header("Set Dynamically")]
     public GameObject launchPoint;
     public Vector3 launchPos;
     public GameObject projectile;
     public bool aiming;
+
+    private Rigidbody projectileRigidbody;
 
     private void Awake()
     {
@@ -38,18 +41,39 @@ public class Slingshot : MonoBehaviour
         aiming = true;
         projectile = Instantiate(prefabProjectile) as GameObject;
         projectile.transform.position = launchPos;
-        projectile.GetComponent<Rigidbody>().isKinematic = true;
+        
+
+        projectileRigidbody = projectile.GetComponent<Rigidbody>();
+        projectileRigidbody.isKinematic = true;
+
     }
 
-    private void OnMouseUp()
+    private void Update()
     {
-        if (aiming == true)
-        {
-            //launch projectile
-            projectile.GetComponent<Rigidbody>().isKinematic = false;
+        if (aiming == false) return;
 
+        Vector3 mousePos2d = Input.mousePosition;
+        mousePos2d.z = -Camera.main.transform.position.z;
+        Vector3 mousePos3d = Camera.main.ScreenToWorldPoint(mousePos2d);
+
+        Vector3 mouseDelta = mousePos3d - launchPos;
+
+        float maxMagnitude = this.GetComponent<SphereCollider>().radius;
+        if (mouseDelta.magnitude > maxMagnitude)
+        {
+            mouseDelta.Normalize();
+            mouseDelta *= maxMagnitude;
+        }
+
+        Vector3 projPos = launchPos + mouseDelta;
+        projectile.transform.position = projPos;
+
+        if (Input.GetMouseButtonUp(0))
+        {
             aiming = false;
-            //count down 1 projectile use
+            projectileRigidbody.isKinematic = false;
+            projectileRigidbody.velocity = -mouseDelta * velocityMult;
+            projectile = null;
         }
     }
 }
