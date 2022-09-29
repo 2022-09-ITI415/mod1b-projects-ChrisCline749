@@ -22,11 +22,21 @@ public class FollowCam : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (poi == null) return;
+        Vector3 destination;
+        if (poi == null) destination = Vector3.zero;
 
-        Vector3 destination = poi.transform.position;
-        destination.x = Mathf.Max(minXy.x, destination.x);
-        destination.y = Mathf.Max(minXy.y, destination.y);
+        else
+        {
+            destination = poi.transform.position;
+            destination.x = Mathf.Max(minXy.x, destination.x);
+            destination.y = Mathf.Max(minXy.y, destination.y);
+            if (poi.GetComponent<Rigidbody>().IsSleeping() == true)
+            {
+                poi = null;
+                return;
+            }
+        }
+
         destination = Vector3.Lerp(transform.position, destination, easing);
         destination.z = camZ;
         transform.position = destination;
