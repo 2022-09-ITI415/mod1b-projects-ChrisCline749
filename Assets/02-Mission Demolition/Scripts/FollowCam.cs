@@ -28,13 +28,13 @@ public class FollowCam : MonoBehaviour
         else
         {
             destination = poi.transform.position;
-            destination.x = Mathf.Max(minXy.x, destination.x);
-            destination.y = Mathf.Max(minXy.y, destination.y);
-            if (poi.GetComponent<Rigidbody>().IsSleeping() == true)
+            if (poi.tag == "Projectile" && poi.GetComponent<Rigidbody>().IsSleeping() == true)
             {
                 poi = null;
                 return;
             }
+            destination.x = Mathf.Max(minXy.x, destination.x);
+            destination.y = Mathf.Max(minXy.y, destination.y);
         }
 
         destination = Vector3.Lerp(transform.position, destination, easing);
