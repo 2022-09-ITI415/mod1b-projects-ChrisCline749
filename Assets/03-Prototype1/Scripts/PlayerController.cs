@@ -6,18 +6,28 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 0;
+    public float speed = 10;
+    public float jumpPower = 10;
     public TextMeshProUGUI countText;
     public GameObject winText;
 
     private Rigidbody rb;
     private float moveX;
     private float moveY;
+    private float moveZ;
     private int count;
+
+    private bool hasJumped;
 
     // Start is called before the first frame update
     void Start()
     {
+        moveX = 0;
+        moveY = 0;
+        moveZ = 0;
+
+        hasJumped = false;
+
         rb = GetComponent<Rigidbody>();
         count = 0;
 
@@ -43,11 +53,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground") == true)
+        {
+            hasJumped = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && hasJumped == false)
+        {
+            moveZ = 1;
+            hasJumped = true;
+        }
+    }
+
     private void FixedUpdate()
     {
-        Vector3 movement = new Vector3(moveX, 0.0f, moveY);
+        Vector3 movement = new Vector3(moveX * speed, moveZ * jumpPower, moveY * speed);
+        if (moveZ != 0)
+        {
+            moveZ = 0;
+        }
 
-        rb.AddForce(movement * speed);
+        rb.AddForce(movement);
     }
 
     void SetCountText()

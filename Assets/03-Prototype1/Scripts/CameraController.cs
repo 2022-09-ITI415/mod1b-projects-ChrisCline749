@@ -2,21 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController: MonoBehaviour
 {
-    public GameObject player;
 
-    private Vector3 offset;
+    [Header("Set in Inspecter")]
+    public GameObject poi;
+    public float easing = 0.05f;
 
-    // Start is called before the first frame update
-    void Start()
+    [Header("Set Dynamically")]
+    public float camZ;
+
+
+    void Awake()
     {
-        offset = transform.position - player.transform.position;
+        camZ = this.transform.position.z;
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+
+    void FixedUpdate()
     {
-        transform.position = player.transform.position + offset;
+        Vector3 destination;
+
+        destination = poi.transform.position;
+        destination.y = Mathf.Max(0, destination.y);
+        
+
+        destination = Vector3.Lerp(transform.position, destination, easing);
+        destination.z = camZ;
+        transform.position = destination;
+
+        Camera.main.orthographicSize = destination.y + 10;
+        if (Camera.main.orthographicSize > 100) Camera.main.orthographicSize = 100;
     }
 }
