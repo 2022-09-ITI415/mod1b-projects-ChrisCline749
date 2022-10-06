@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Basket : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class Basket : MonoBehaviour
     void Update()
     {
         // Get the current screen position of the mouse from Input
-        Vector3 mousePos2D = Input.mousePosition;
+        Vector3 mousePos2D = new Vector3 (Mouse.current.position.x.ReadValue(), Mouse.current.position.y.ReadValue(), 0);
         // The Camera's z position sets how far to push the mouse into 3d
         mousePos2D.z = -Camera.main.transform.position.z;
         // Convert the point from 2D screen space into 3d game world space

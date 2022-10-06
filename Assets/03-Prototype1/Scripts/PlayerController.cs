@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10;
     public float jumpPower = 10;
+    public int pickupsToWin = 7;
     public Text countText;
     public GameObject winText;
 
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour
     {
         countText.text = "Count: " + count.ToString();
 
-        if (count >= 7)
+        if (count >= pickupsToWin)
         {
             winText.SetActive(true);
         }

@@ -2754,6 +2754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpPower: 500
+  pickupsToWin: 7
   countText: {fileID: 1468969234}
   winText: {fileID: 1132164522}
 --- !u!4 &2083907316 stripped
