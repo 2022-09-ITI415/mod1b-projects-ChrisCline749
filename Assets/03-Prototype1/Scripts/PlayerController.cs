@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10;
     public float jumpPower = 10;
-    public TextMeshProUGUI countText;
+    public Text countText;
     public GameObject winText;
 
     private Rigidbody rb;

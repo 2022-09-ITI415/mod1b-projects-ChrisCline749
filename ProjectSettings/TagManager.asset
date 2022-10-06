@@ -8,6 +8,8 @@ TagManager:
   - Score
   - HighScore
   - Projectile
+  - PickUp
+  - Ground
   layers:
   - Default
   - TransparentFX
