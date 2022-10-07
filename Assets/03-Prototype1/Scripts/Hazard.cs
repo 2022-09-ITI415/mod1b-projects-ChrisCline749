@@ -19,7 +19,7 @@ public class Hazard : MonoBehaviour
             //freeze player
             //Display you lose
             //Wait 5 sec
-            SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
+            SceneManager.LoadScene(SceneManager.GetSceneAt(3).name);
             //enable movement
         }
     }
