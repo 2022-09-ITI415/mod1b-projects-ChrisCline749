@@ -3,16 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Apple
+  - Score
+  - HighScore
+  - Projectile
+  - PickUp
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - AppleTree
   - Water
   - UI
-  - 
-  - 
+  - Apple
+  - Basket
   - 
   - 
   - 
